@@ -1,9 +1,2 @@
-import { strategysNoficationTypes } from "../../strategy/interfaces/typesStrategys.js";
-
-
-export interface MessageNotification {
-    from: any,
-    to: any,
-    body: any,
-    type: strategysNoficationTypes
-}
+// Re-export from shared to keep existing imports working
+export { MessageNotification } from "../../shared/types.js";
