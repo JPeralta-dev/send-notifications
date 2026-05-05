@@ -22,6 +22,7 @@ export class PublisherNotifycation implements subject {
 
     public notificationBusiness(message: MessageNotification) {
         if (!message) return logger.error('Error not message of notify')
+
         this.notify(message)
     }
 
