@@ -6,7 +6,6 @@ import { logger } from "./logger.js";
 export class PublisherNotifycation implements subject {
     private obsevers: Publisher[] = []
 
-
     addObserver(observer: Publisher): void {
         const isExist = this.obsevers.includes(observer) ? console.log('Observer has been attached already.') : null
         this.obsevers.push(observer)

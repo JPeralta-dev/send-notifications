@@ -7,19 +7,23 @@ import { strategysNoficationTypes } from "../interfaces/typesStrategys.js";
 export class ProviderStrategyNotification {
     private readonly provider: Map<strategysNoficationTypes, strategyNotifaction>
 
-    private constructor() {
+    constructor() {
         this.provider = new Map<strategysNoficationTypes, strategyNotifaction>([
             ['push', new SendPushNotificationStrategy()]
         ])
     }
 
-    public getStrategy(type: strategysNoficationTypes): strategyNotifaction | void {
+    public getStrategy(type: strategysNoficationTypes): strategyNotifaction | undefined {
         const strategy = this.provider.get(type)
 
         if (!strategy) {
-            return logger.error('Methos No Implemented')
+            logger.error('Methos No Implemented')
+            return
         }
 
         return strategy
     }
 }
+
+
+export const provider = new ProviderStrategyNotification()
