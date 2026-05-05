@@ -1,6 +1,7 @@
 import { MessageNotification } from "./interfaces/message.js";
 import { Publisher } from "./interfaces/publishers.js";
 import { subject } from "./interfaces/subject.js"
+import { logger } from "./logger.js";
 
 export class PublisherNotifycation implements subject {
     private obsevers: Publisher[] = []
@@ -21,7 +22,8 @@ export class PublisherNotifycation implements subject {
     }
 
     public notificationBusiness(message: MessageNotification) {
-
+        if (!message) return logger.error('Error not message of notify')
+        this.notify(message)
     }
 
 
