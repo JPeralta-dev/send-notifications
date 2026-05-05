@@ -1,0 +1,1 @@
+export type strategysNoficationTypes = 'Email' | 'SMS' | 'push' 
