@@ -1,3 +1,4 @@
+import { MessageNotification } from "./interfaces/message.js";
 import { Publisher } from "./interfaces/publishers.js";
 import { subject } from "./interfaces/subject.js"
 
@@ -13,12 +14,15 @@ export class PublisherNotifycation implements subject {
         const isIndex = this.obsevers.indexOf(observer) === -1 ? -1 : this.obsevers.indexOf(observer)
         this.obsevers.slice(isIndex, 1)
     }
-    notify(): void {
+    notify(message: MessageNotification): void {
         for (const observer of this.obsevers) {
-            observer.update(this)
+            observer.update(this, message)
         }
     }
 
+    public notificationBusiness(message: MessageNotification) {
+
+    }
 
 
 }
