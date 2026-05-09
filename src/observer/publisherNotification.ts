@@ -40,6 +40,7 @@ export class PublisherNotifycation implements subject {
      * ALERT — broadcasts the SAME message to ALL channels
      * This is business logic: the Publisher decides to fan-out
      */
+
     public alertAllChannels(baseMessage: Omit<MessageNotification, "type">): void {
         if (!baseMessage) return logger.error("Error: no message to alert");
 

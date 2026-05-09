@@ -19,3 +19,20 @@ export interface MessageNotification {
   type: strategysNoficationTypes;
   meta?: Record<string, unknown>;
 }
+
+
+export interface InputUserSendInvitation {
+  userId: string,
+  username: string,
+  phone: string
+
+  collaborator: InputCollaborator
+}
+
+
+export interface InputCollaborator {
+  username: string,
+  email: string,
+  phone: string,
+  meta?: Record<string, unknown>
+}
