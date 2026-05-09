@@ -9,8 +9,10 @@ const subcriberNotifycationAlert = new ObserverNotification()
 
 EmitterNotification.addObserver(subcriberNotifycationAlert)
 
-events.on('notify.business', (message: MessageNotification) => {
-    EmitterNotification.notificationBusiness(message)
+events.on('notify.business', (msg: MessageNotification) => {
+    EmitterNotification.notificationBusiness(msg)
 });
 
-events.
+events.on('notify.allChannels', (msg: MessageNotification) => {
+    EmitterNotification.alertAllChannels(msg)
+})
