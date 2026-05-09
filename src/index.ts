@@ -3,6 +3,9 @@ import { serve } from '@hono/node-server'
 import { prettyJSON } from 'hono/pretty-json'
 import EventEmitter from 'node:events'
 import { InputUserSendInvitation, MessageNotification } from './shared/types.js'
+import { loggerMiddelware } from './shared/middlwareLogger.js'
+import { logger } from 'hono/logger'
+import { EmitterNotification } from './shared/events.js'
 
 export const events = new EventEmitter()
 const app = new Hono()
@@ -19,7 +22,7 @@ console.log('http://localhost:3000');
 app.get('/', (c) => c.text('Welcome to send notification'))
 
 app.use(prettyJSON())
-
+app.use(logger())
 
 app.post('/notify', async (c) => {
   const body = await c.req.json() as MessageNotification
@@ -34,4 +37,13 @@ app.post('/alert', async (c) => {
 })
 
 
+events.on('notify.business', (msg: MessageNotification) => {
+
+  EmitterNotification.notificationBusiness(msg)
+});
+
+events.on('notify.allChannels', (msg: MessageNotification) => {
+
+  EmitterNotification.alertAllChannels(msg)
+})
 export default app

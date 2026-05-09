@@ -23,6 +23,7 @@ export class PublisherNotifycation implements subject {
     }
 
     notify(message: MessageNotification): void {
+
         for (const observer of this.obsevers) {
             observer.update(this, message);
         }

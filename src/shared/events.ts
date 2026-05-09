@@ -8,11 +8,3 @@ export const EmitterNotification = new PublisherNotifycation()
 const subcriberNotifycationAlert = new ObserverNotification()
 
 EmitterNotification.addObserver(subcriberNotifycationAlert)
-
-events.on('notify.business', (msg: MessageNotification) => {
-    EmitterNotification.notificationBusiness(msg)
-});
-
-events.on('notify.allChannels', (msg: MessageNotification) => {
-    EmitterNotification.alertAllChannels(msg)
-})
